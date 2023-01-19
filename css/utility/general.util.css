@@ -1,0 +1,70 @@
+/* Card */
+.card {
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  background-color: white;
+}
+
+/* Backdrop */
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.75);
+}
+
+/* Modal */
+.modal {
+  position: absolute;
+  top: 20vh;
+  left: 50%;
+  transform: translate(-50%);
+  width: 80vw;
+  z-index: 100;
+  overflow: hidden;
+  padding: 1rem;
+}
+
+/* Button */
+.btn {
+  border: none;
+  border-radius: 1rem;
+  padding: 0.5rem;
+}
+
+/* List Util Classes*/
+.list-nostyle {
+  list-style: none;
+}
+
+/* Navbar */
+.nav-bar {
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #000;
+  padding: 0.5rem;
+  overflow: hidden;
+}
+
+.nav-bar ul {
+  padding: 0;
+}
+
+.nav-bar ul li a {
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+}
+
+@media (min-width: 768px) {
+  .modal {
+    width: 50vw;
+  }
+}
