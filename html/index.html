@@ -1,291 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
-
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+    <!-- <link rel="stylesheet" href="../css/utility/grid.util.css" /> -->
+    <!-- <link rel="stylesheet" href="../css/utility/general.util.css" /> -->
+    <!-- <link rel="stylesheet" href="../css/utility/alignment.util.css" /> -->
     <link rel="stylesheet" href="../css/utility/flex.util.css" />
-    <link rel="stylesheet" href="../css/utility/grid.util.css" />
-    <link rel="stylesheet" href="../css/utility/alignment.util.css" />
+    <link rel="stylesheet" href="../css/home.css" />
     <link rel="stylesheet" href="../css/utility/normalize.css" />
-    <link rel="stylesheet" href="../css/utility/general.util.css" />
   </head>
 
   <body>
-    <!-- <nav class="nav-bar">
-      <ul class="flex flex-row gap-4">
-        <li><a href="">Home</a></li>
-        <li><a href="">Test</a></li>
-        <li><a href="">Test</a></li>
-        <li><a href="">Test</a></li>
-        <li><a href="">Test</a></li>
-      </ul>
-
-      <ul class="flex flex-row gap-4">
-        <li><a href="" id="login">Login</a></li>
-        <li><a href="" id="signup">Sign Up</a></li>
-      </ul>
-    </nav>
-    <div>asd</div> -->
-
-
-
     <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
       <div class="container-fluid">
-          <a class="navbar-brand" href="#">Bookstore</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-              data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-              aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                  <li class="nav-item">
-                      <a class="nav-link active" aria-current="page" href="#">Home</a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link" href="#">Test</a>
-                  </li>
-                  <li class="nav-item dropdown">
-                      <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                          aria-expanded="false">
-                          Dropdown
-                      </a>
-                      <ul class="dropdown-menu">
-                          <li><a class="dropdown-item" href="#">Action</a></li>
-                          <li><a class="dropdown-item" href="#">Another action</a></li>
-                          <li>
-                              <hr class="dropdown-divider">
-                          </li>
-                          <li><a class="dropdown-item" href="#">Something else here</a></li>
-                      </ul>
-                  </li>
+        <a class="navbar-brand" href="#">Bookstore</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Test</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Books
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" id="createBookBtn" href="#"
+                    >Create Book</a
+                  >
+                </li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li>
+                  <hr class="dropdown-divider" />
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                </li>
               </ul>
-              <div class="btn-group" role="group">
-                  <button class="btn btn-outline-success" type="submit" id="login">Login</button>
-                  <button class="btn btn-outline-success" type="submit" id="signup">Sign up</button>
-              </div>
+            </li>
+          </ul>
+          <div class="btn-group" role="group">
+            <button class="btn btn-outline-success" type="submit" id="login">
+              Login
+            </button>
+            <button class="btn btn-outline-success" type="submit" id="signup">
+              Sign up
+            </button>
           </div>
-      </div>
-  </nav>
-    
-  <!-- 
-      <div class="container mt-4">
-            <div class="row row-cols-2 row-cols-lg-3 g-4">
-                <div class="col">
-                    <div class="card h-100" style="width: 18rem;">
-                        <img src="url" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Book title</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">Author</h6>
-
-                            <div class="description" style="margin-bottom: 5px;">
-                                <p class="card-text">Description: <span class="shortDescription"> Ipsum is simply
-                                        dummy text of the printing and typesetting
-                                        industry. Lorem Ipsum has been the industry's standard dummy text ever
-                                        since the 1500s, when an unknown printer took a galley of type and
-                                        scrambled it to make a type specimen book. It has survived not only five
-                                        centuries, but also the leap into electronic typesetting, remaining
-                                        essentially unchanged.</span>
-                                    <a class="link-info" data-bs-toggle="modal" data-bs-target="#fullDescription"
-                                        style="cursor: pointer;">
-                                        Learn More
-                                    </a>
-                                </p>
-
-                                <div class="modal fade" id="fullDescription" tabindex="-1"
-                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-body">
-                                                Lorem Ipsum is simply dummy text of the printing and typesetting
-                                                industry. Lorem Ipsum has been the industry's standard dummy text ever
-                                                since the 1500s, when an unknown printer took a galley of type and
-                                                scrambled it to make a type specimen book. It has survived not only five
-                                                centuries, but also the leap into electronic typesetting, remaining
-                                                essentially unchanged.
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="modal fade" id="fullInfo" tabindex="-1" aria-labelledby="exampleModalLabel"
-                                    aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title">Book title</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <p>Modal body text goes here.</p>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-primary">Save changes</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <a href="#" class="btn btn-primary">Purchase</a>
-                            <a href="#" class="btn btn-primary" data-bs-toggle="modal"
-                                data-bs-target="#fullInfo">Edit</a>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="col">
-                    <div class="card h-100" style="width: 18rem;">
-                        <img src="url" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Book title</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">Author</h6>
-
-                            <div class="description" style="margin-bottom: 5px;">
-                                <p class="card-text">Description: <span class="shortDescription"> Ipsum is simply
-                                        dummy text of the printing and typesetting
-                                        industry. Lorem Ipsum has been the industry's standard dummy text ever
-                                        since the 1500s, when an unknown printer took a galley of type and
-                                        scrambled it to make a type specimen book. It has survived not only five
-                                        centuries, but also the leap into electronic typesetting, remaining
-                                        essentially unchanged.</span>
-                                    <a class="link-info" data-bs-toggle="modal" data-bs-target="#fullDescription"
-                                        style="cursor: pointer;">
-                                        Learn More
-                                    </a>
-                                </p>
-
-                                <div class="modal fade" id="fullDescription" tabindex="-1"
-                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-body">
-                                                Lorem Ipsum is simply dummy text of the printing and typesetting
-                                                industry. Lorem Ipsum has been the industry's standard dummy text ever
-                                                since the 1500s, when an unknown printer took a galley of type and
-                                                scrambled it to make a type specimen book. It has survived not only five
-                                                centuries, but also the leap into electronic typesetting, remaining
-                                                essentially unchanged.
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="modal fade" id="fullInfo" tabindex="-1" aria-labelledby="exampleModalLabel"
-                                    aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title">Book title</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <p>Modal body text goes here.</p>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-primary">Save changes</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <a href="#" class="btn btn-primary">Purchase</a>
-                            <a href="#" class="btn btn-primary" data-bs-toggle="modal"
-                                data-bs-target="#fullInfo">Edit</a>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="col">
-                    <div class="card h-100" style="width: 18rem;">
-                        <img src="url" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Book title</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">Author</h6>
-
-                            <div class="description" style="margin-bottom: 5px;">
-                                <p class="card-text">Description: <span class="shortDescription"> Ipsum is simply
-                                        dummy text of the printing and typesetting
-                                        industry. Lorem Ipsum has been the industry's standard dummy text ever
-                                        since the 1500s, when an unknown printer took a galley of type and
-                                        scrambled it to make a type specimen book. It has survived not only five
-                                        centuries, but also the leap into electronic typesetting, remaining
-                                        essentially unchanged.</span>
-                                    <a class="link-info" data-bs-toggle="modal" data-bs-target="#fullDescription"
-                                        style="cursor: pointer;">
-                                        Learn More
-                                    </a>
-                                </p>
-
-                                <div class="modal fade" id="fullDescription" tabindex="-1"
-                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-body">
-                                                Lorem Ipsum is simply dummy text of the printing and typesetting
-                                                industry. Lorem Ipsum has been the industry's standard dummy text ever
-                                                since the 1500s, when an unknown printer took a galley of type and
-                                                scrambled it to make a type specimen book. It has survived not only five
-                                                centuries, but also the leap into electronic typesetting, remaining
-                                                essentially unchanged.
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="modal fade" id="fullInfo" tabindex="-1" aria-labelledby="exampleModalLabel"
-                                    aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title">Book title</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <p>Modal body text goes here.</p>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-primary">Save changes</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <a href="#" class="btn btn-primary">Purchase</a>
-                            <a href="#" class="btn btn-primary" data-bs-toggle="modal"
-                                data-bs-target="#fullInfo">Edit</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
+      </div>
+    </nav>
 
-
-   -->
-
+    <div class="container mt-4">
+      <div id="books-wrapper" class="row row-cols-2 row-cols-lg-3 g-4"></div>
+    </div>
   </body>
+
   <script src="../js/auth/login.js"></script>
   <script src="../js/auth/register.js"></script>
-
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+  <script src="../js/products/getProducts.js"></script>
+  <script src="../js/products/createProducts.js"></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
     integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
-    crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
     integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
-    crossorigin="anonymous"></script>
-
+    crossorigin="anonymous"
+  ></script>
 </html>

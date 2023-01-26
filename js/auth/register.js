@@ -24,7 +24,7 @@ const registerBtn = document.getElementById("signup");
 const RegisterForm = () => {
   const form = document.createElement("form");
   form.method = "post";
-  form.classList = "flex flex-col flex-center gap-3 card modal";
+  form.classList = "flex flex-col flex-center gap-3 card popup";
   form.id = "registerForm";
 
   form.innerHTML = `
@@ -35,6 +35,7 @@ const RegisterForm = () => {
         <input
           type="text"
           id="inputFirstName"
+          class="form-control"
           placeholder="First Name"
           required
           autofocus=""
@@ -43,6 +44,7 @@ const RegisterForm = () => {
         <input
           type="text"
           id="inputLastName"
+          class="form-control"
           placeholder="Last Name"
           required
           autofocus=""
@@ -51,6 +53,7 @@ const RegisterForm = () => {
         <input
           type="text"
           id="inputUsername"
+          class="form-control"
           placeholder="Username"
           required
           autofocus=""
@@ -59,6 +62,7 @@ const RegisterForm = () => {
         <input
           type="text"
           id="inputEmail"
+          class="form-control"
           placeholder="example@email.com"
           required
           autofocus=""
@@ -67,12 +71,13 @@ const RegisterForm = () => {
         <input
           type="password"
           id="inputPassword"
+          class="form-control"
           placeholder="Password"
           required
         />
       </div>
 
-      <button type="submit" class="btn">Sign in</button>
+      <button type="submit" class="btn btn-primary">Sign in</button>
   `;
 
   document.body.appendChild(form);
