@@ -36,6 +36,10 @@
   padding: 1rem;
 }
 
+.no-display{
+  display: none;
+}
+
 @media (max-width: 768px) {
   #books-wrapper {
     display: flex;

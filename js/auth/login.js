@@ -1,5 +1,4 @@
 const BASE_URL = "http://localhost/bookstore-php-api/index.php/";
-const loginBtn = document.getElementById("login");
 
 const closeModal = (backdrop, modal) => {
   document.body.removeChild(backdrop);
@@ -80,6 +79,7 @@ loginBtn.addEventListener("click", (event) => {
       const data = await result.json();
       localStorage.setItem("USER_AUTH", data.token);
       closeModal(backdrop, modal);
+      checkAuth();
     } else {
       console.log(result.status, result.statusText);
     }

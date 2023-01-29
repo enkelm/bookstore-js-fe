@@ -13,12 +13,13 @@ const generateId = (length = 10) => {
   return result.trim();
 };
 
-const Book = (imgUrl, title, author, description) => {
+const Book = (bookId, imgUrl, title, author, description, price) => {
   const bookWrapper = document.createElement("div");
   bookWrapper.classList = "col";
 
   const learnMoreId = generateId();
   const editId = generateId();
+  const purchaseId = generateId();
 
   bookWrapper.innerHTML = `
     <div class="card h-100" style="width: 18rem;">
@@ -86,8 +87,8 @@ const Book = (imgUrl, title, author, description) => {
 
             
 
-            <a href="#" class="btn btn-primary">Purchase</a>
-            <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="${
+            <a href="#" id="${purchaseId}" class="btn btn-primary no-display" >Purchase</a>
+            <a href="#" class="btn btn-primary no-display" data-bs-toggle="modal" data-bs-target="${
               "#" + editId
             }">Edit</a>
         </div>
@@ -96,6 +97,14 @@ const Book = (imgUrl, title, author, description) => {
     `;
 
   booksWrapper.appendChild(bookWrapper);
+
+  let purchaseBtn = document.getElementById(purchaseId);
+  purchaseBtn.addEventListener("click", () => {
+    let purchased = document.querySelector(`#item-${bookId}`);
+    if (purchased) return bookWrapper;
+    CreateShoppingItem(bookId, title, author, price);
+  });
+
   return bookWrapper;
 };
 
@@ -108,13 +117,16 @@ async function getAllBooks() {
   });
 }
 
-const Books = () => {};
+const Books = () => {
+  Book(
+    0,
+    "localhost:80/bookstore-php-api/images/",
+    "test",
+    "test",
+    "kfjhakjfdhksadfhlkdsa",
+    10
+  );
+  // Book("", "test", "test", "kjsadksahdlkdsfhlksaf");
+};
 
 Books();
-Book(
-  "localhost:80/bookstore-php-api/images/",
-  "test",
-  "test",
-  "kfjhakjfdhksadfhlkdsa"
-);
-// Book("", "test", "test", "kjsadksahdlkdsfhlksaf");

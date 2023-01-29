@@ -1,5 +1,4 @@
 // const BASE_URL = "http://localhost/bookstore-php-api/index.php/";
-const registerBtn = document.getElementById("signup");
 
 // const closeModal = (backdrop, modal) => {
 //   document.body.removeChild(backdrop);
@@ -47,7 +46,6 @@ const RegisterForm = () => {
           class="form-control"
           placeholder="Last Name"
           required
-          autofocus=""
         />
         <label for="inputUsername">Username</label>
         <input
@@ -56,7 +54,6 @@ const RegisterForm = () => {
           class="form-control"
           placeholder="Username"
           required
-          autofocus=""
         />
         <label for="inputEmail">Email address</label>
         <input
@@ -65,7 +62,6 @@ const RegisterForm = () => {
           class="form-control"
           placeholder="example@email.com"
           required
-          autofocus=""
         />
         <label for="inputPassword">Password</label>
         <input
