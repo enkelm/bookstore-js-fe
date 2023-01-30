@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost/bookstore-php-api/index.php/";
+// const BASE_URL = "http://localhost/bookstore-php-api/index.php/";
 
 const closeModal = (backdrop, modal) => {
   document.body.removeChild(backdrop);

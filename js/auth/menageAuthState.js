@@ -3,10 +3,10 @@ const registerBtn = document.getElementById("signup");
 const logoutBtn = document.getElementById("logout");
 const shoppingCartBtn = document.getElementById("shopping-cart");
 const booksMenagement = document.getElementById("books-menagement");
-const noDisplayAdmin = document.querySelectorAll(".no-display-admin");
-const noDisplayClient = document.querySelectorAll(".no-display-client");
 
 const checkAuth = () => {
+  const noDisplayAdmin = document.querySelectorAll(".no-display-admin");
+  const noDisplayClient = document.querySelectorAll(".no-display-client");
   const token = localStorage.getItem("USER_AUTH");
   const role = localStorage.getItem("USER_ROLE");
 

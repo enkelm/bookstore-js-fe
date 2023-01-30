@@ -1,3 +1,4 @@
+const BASE_URL = "http://localhost/bookstore-php-api/index.php/";
 const booksWrapper = document.getElementById("books-wrapper");
 
 const generateId = (length = 10) => {
@@ -13,7 +14,16 @@ const generateId = (length = 10) => {
   return result.trim();
 };
 
-const Book = (bookId, imgUrl, title, author, description, price) => {
+const Book = (
+  bookId,
+  imgUrl,
+  title,
+  author,
+  description,
+  price,
+  bulkPrice,
+  bulkCondition
+) => {
   const bookWrapper = document.createElement("div");
   bookWrapper.classList = "col";
 
@@ -54,7 +64,7 @@ const Book = (bookId, imgUrl, title, author, description, price) => {
                   </div>
                 </div>
 
-                <div
+                <form
                   class="modal fade"
                   id="${editId}"
                   tabindex="-1"
@@ -64,7 +74,7 @@ const Book = (bookId, imgUrl, title, author, description, price) => {
                   <div class="modal-dialog">
                     <div class="modal-content">
                       <div class="modal-header">
-                        <h5 class="modal-title">Book title</h5>
+                        <h5 class="modal-title">Edit: ${title}</h5>
                         <button
                           type="button"
                           class="btn-close"
@@ -73,7 +83,67 @@ const Book = (bookId, imgUrl, title, author, description, price) => {
                         ></button>
                       </div>
                       <div class="modal-body">
-                        <p>Modal body text goes here.</p>
+                        <div class="grid grid-col-2 gap-2">
+                          <label for="inputTitle">Title</label>
+                          <input
+                            type="text"
+                            id="inputTitle"
+                            class="form-control"
+                            placeholder="Title"
+                            required
+                            value="${title}"
+                            autofocus=""
+                          />
+                          <label for="inputAuthor">Author</label>
+                          <input
+                            type="text"
+                            id="inputAuthor"
+                            class="form-control"
+                            placeholder="Author Name"
+                            required
+                            value="${author}"
+                          />
+                          <label for="inputDescripion">Description</label>
+                          <textarea name="" id="inputDescription" 
+                            class="form-control" 
+                            cols="30" rows="3"
+                            placeholder="Book synopsis..."
+                            value="${description}"
+                            required
+                          ></textarea>
+                          <label for="inputPrice">Price</label>
+                          <input
+                          type="number"
+                          id="inputPrice"
+                          class="form-control"
+                          placeholder="100"
+                          value="${price}"
+                          required
+                          />
+                          <label for="inputBulkPrice">Bulk Price</label>
+                          <input
+                            type="number"
+                            id="inputBulkPrice"
+                            class="form-control"
+                            placeholder="70"
+                            required
+                            value="${bulkPrice}"
+                          />
+                          <label for="inputBulkCondition">Bulk Condition</label>
+                          <input
+                            type="number"
+                            id="inputBulkCondition"
+                            class="form-control"
+                            placeholder="10"
+                            required
+                            value="${bulkCondition}"
+                          />
+                          <label for="inputCoverImage">Cover Image</label>
+                          <input
+                            type="file"
+                            id="inputCoverImage"
+                          />
+                          </div>
                       </div>
                       <div class="modal-footer">
                         <button type="button" class="btn btn-primary">
@@ -82,7 +152,7 @@ const Book = (bookId, imgUrl, title, author, description, price) => {
                       </div>
                     </div>
                   </div>
-                </div>
+                </form>
             </div>
 
             
@@ -111,25 +181,28 @@ const Book = (bookId, imgUrl, title, author, description, price) => {
 async function getAllBooks() {
   const result = await fetch(BASE_URL + "products/getAll", {
     method: "GET",
-    headers: {
-      "Content-type": "application/x-www-form-urlencoded; charset=UTF-8",
-    },
   });
   const data = await result.json();
 
   return data;
 }
 
-const Books = () => {
-  Book(
-    0,
-    "localhost:80/bookstore-php-api/images/",
-    "test",
-    "test",
-    "kfjhakjfdhksadfhlkdsa",
-    10
-  );
-  // Book("", "test", "test", "kjsadksahdlkdsfhlksaf");
+const Books = async () => {
+  const books = await getAllBooks();
+  localStorage.setItem("BOOKS", JSON.stringify(books));
+  books.forEach((book) => {
+    Book(
+      book.Id,
+      book.CoverImageUrl,
+      book.Title,
+      book.Author,
+      book.Description,
+      book.Price,
+      book.BulkPrice,
+      book.BulkCondition
+    );
+  });
+  checkAuth();
 };
 
 Books();
