@@ -78,6 +78,7 @@ loginBtn.addEventListener("click", (event) => {
     if (result.status >= 200 && result.status <= 299) {
       const data = await result.json();
       localStorage.setItem("USER_AUTH", data.token);
+      localStorage.setItem("USER_ROLE", data.role);
       closeModal(backdrop, modal);
       checkAuth();
     } else {

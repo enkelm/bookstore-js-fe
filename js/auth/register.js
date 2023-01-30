@@ -118,8 +118,8 @@ registerBtn.addEventListener("click", (event) => {
         5: modal.inputPassword.value,
         CreatedAt: datetime,
         6: datetime,
-        Role: 8,
-        7: 8,
+        Role: 9,
+        7: 9,
       }),
     });
 

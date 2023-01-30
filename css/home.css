@@ -7,10 +7,10 @@
   -webkit-box-orient: vertical;
 }
 
-.purchasedItems{
+.purchasedItems {
   padding-right: 2%;
   max-height: 300px;
-  overflow-y: auto;   
+  overflow-y: auto;
 }
 
 /* Backdrop */
@@ -36,7 +36,11 @@
   padding: 1rem;
 }
 
-.no-display{
+.no-display-client {
+  display: none;
+}
+
+.no-display-admin {
   display: none;
 }
 

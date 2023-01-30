@@ -87,8 +87,8 @@ const Book = (bookId, imgUrl, title, author, description, price) => {
 
             
 
-            <a href="#" id="${purchaseId}" class="btn btn-primary no-display" >Purchase</a>
-            <a href="#" class="btn btn-primary no-display" data-bs-toggle="modal" data-bs-target="${
+            <a href="#" id="${purchaseId}" class="btn btn-primary no-display-client" >Purchase</a>
+            <a href="#" class="btn btn-primary no-display-admin" data-bs-toggle="modal" data-bs-target="${
               "#" + editId
             }">Edit</a>
         </div>
@@ -115,6 +115,9 @@ async function getAllBooks() {
       "Content-type": "application/x-www-form-urlencoded; charset=UTF-8",
     },
   });
+  const data = await result.json();
+
+  return data;
 }
 
 const Books = () => {
