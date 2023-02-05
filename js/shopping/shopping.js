@@ -1,4 +1,6 @@
 const purchasedItems = document.querySelector(".purchasedItems");
+const totalQuantity = document.getElementById("total-quantity");
+const totalPrice = document.getElementById("total-price");
 
 const CreateShoppingItem = (
   bookId = generateId,
@@ -11,6 +13,7 @@ const CreateShoppingItem = (
   item.id = `item-${bookId}`;
 
   const deleteBtnId = generateId();
+  const quantityId = generateId();
 
   item.innerHTML = `
       <div class="card-body p-4">
@@ -28,10 +31,12 @@ const CreateShoppingItem = (
             </button>
 
             <input
-              id="form1"
+              id="${quantityId}"
               name="quantity"
               value="1"
               type="number"
+              min="0"
+              max="100"
               class="form-control form-control-sm"
             />
 
@@ -53,9 +58,41 @@ const CreateShoppingItem = (
 
   purchasedItems.appendChild(item);
 
+  let quantityInput = document.getElementById(quantityId);
   let deleteBtn = document.getElementById(deleteBtnId);
+
   deleteBtn.addEventListener("click", () => {
     purchasedItems.removeChild(item);
+    let removeFromTotal = parseInt(quantityInput.value) * price;
+    totalQuantity.innerHTML = `${
+      parseInt(totalQuantity.innerHTML) - parseInt(quantityInput.value)
+    }`;
+    totalPrice.innerHTML = `${
+      parseInt(totalPrice.innerHTML) - removeFromTotal
+    }`;
+  });
+
+  let prevQuantity = 1;
+
+  quantityInput.addEventListener("change", (event) => {
+    let totQuantity = parseInt(totalQuantity.innerHTML);
+    let currQuantity = parseInt(event.target.value);
+    let newTotalPrice = parseInt(totalPrice.innerHTML);
+
+    if (prevQuantity < currQuantity) {
+      totQuantity += 1;
+      newTotalPrice += price;
+    }
+    if (prevQuantity > currQuantity) {
+      totQuantity -= 1;
+      newTotalPrice -= price;
+    }
+    if (currQuantity === 0) {
+      purchasedItems.removeChild(item);
+    }
+    totalQuantity.innerHTML = `${totQuantity}`;
+    totalPrice.innerHTML = `${newTotalPrice}`;
+    prevQuantity = currQuantity;
   });
 
   return item;

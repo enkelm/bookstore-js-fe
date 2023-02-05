@@ -30,10 +30,11 @@ const Book = (
   const learnMoreId = generateId();
   const editId = generateId();
   const purchaseId = generateId();
+  const deleteBookId = generateId();
 
   bookWrapper.innerHTML = `
     <div class="card h-100" style="width: 18rem;">
-        <img src="${imgUrl}" class="card-img-top" alt="" />
+        <img src="${imgUrl}" class="card-img-top" alt="${title} cover image" />
         <div class="card-body">
             <h5 class="card-title">${title}</h5>
             <h6 class="card-subtitle mb-2 text-muted">${author}</h6>
@@ -87,7 +88,7 @@ const Book = (
                           <label for="inputTitle">Title</label>
                           <input
                             type="text"
-                            id="inputTitle"
+                            id="inputTitle_${editId}"
                             class="form-control"
                             placeholder="Title"
                             required
@@ -97,24 +98,23 @@ const Book = (
                           <label for="inputAuthor">Author</label>
                           <input
                             type="text"
-                            id="inputAuthor"
+                            id="inputAuthor_${editId}"
                             class="form-control"
                             placeholder="Author Name"
                             required
                             value="${author}"
                           />
                           <label for="inputDescripion">Description</label>
-                          <textarea name="" id="inputDescription" 
+                          <textarea name="" id="inputDescription_${editId}" 
                             class="form-control" 
                             cols="30" rows="3"
                             placeholder="Book synopsis..."
-                            value="${description}"
                             required
-                          ></textarea>
+                          >${description}</textarea>
                           <label for="inputPrice">Price</label>
                           <input
                           type="number"
-                          id="inputPrice"
+                          id="inputPrice_${editId}"
                           class="form-control"
                           placeholder="100"
                           value="${price}"
@@ -123,7 +123,7 @@ const Book = (
                           <label for="inputBulkPrice">Bulk Price</label>
                           <input
                             type="number"
-                            id="inputBulkPrice"
+                            id="inputBulkPrice_${editId}"
                             class="form-control"
                             placeholder="70"
                             required
@@ -132,7 +132,7 @@ const Book = (
                           <label for="inputBulkCondition">Bulk Condition</label>
                           <input
                             type="number"
-                            id="inputBulkCondition"
+                            id="inputBulkCondition_${editId}"
                             class="form-control"
                             placeholder="10"
                             required
@@ -141,12 +141,15 @@ const Book = (
                           <label for="inputCoverImage">Cover Image</label>
                           <input
                             type="file"
-                            id="inputCoverImage"
+                            id="inputCoverImage_${editId}"
                           />
                           </div>
                       </div>
                       <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">
+                        <button id="${deleteBookId}" type="button" class="btn btn-primary">
+                          Delete
+                        </button>
+                        <button type="submit" class="btn btn-primary" >
                           Save changes
                         </button>
                       </div>
@@ -168,11 +171,59 @@ const Book = (
 
   booksWrapper.appendChild(bookWrapper);
 
-  let purchaseBtn = document.getElementById(purchaseId);
+  const editForm = document.getElementById(editId);
+  const purchaseBtn = document.getElementById(purchaseId);
+  const deleteBookBtn = document.getElementById(deleteBookId);
+
+  editForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    let formData = new FormData();
+    formData.append("Title", editForm[`inputTitle_${editId}`].value);
+    formData.append("Author", editForm[`inputAuthor_${editId}`].value);
+    formData.append(
+      "Description",
+      editForm[`inputDescription_${editId}`].value
+    );
+    formData.append("Price", editForm[`inputPrice_${editId}`].value);
+    formData.append("BulkPrice", editForm[`inputBulkPrice_${editId}`].value);
+    formData.append(
+      "BulkCondition",
+      editForm[`inputBulkCondition_${editId}`].value
+    );
+    if (editForm[`inputCoverImage_${editId}`].files[0]) {
+      formData.append(
+        "CoverImage",
+        editForm[`inputCoverImage_${editId}`].files[0]
+      );
+    }
+    formData.append("CoverImageUrl", imgUrl);
+    console.log(formData);
+    console.log("save");
+  });
+
   purchaseBtn.addEventListener("click", () => {
     let purchased = document.querySelector(`#item-${bookId}`);
     if (purchased) return bookWrapper;
+
+    let totQuantity = parseInt(totalQuantity.innerHTML);
+    totQuantity += 1;
+    totalQuantity.innerHTML = `${totQuantity}`;
+
+    let totPrice = parseInt(totalPrice.innerHTML);
+    totPrice += price;
+    totalPrice.innerHTML = `${totPrice}`;
     CreateShoppingItem(bookId, title, author, price);
+  });
+
+  deleteBookBtn.addEventListener("click", async () => {
+    // const result = await fetch(BASE_URL + "products/delete", {
+    //   method: POST,
+    //   headers: {
+    //     Authorization: `Bearer ${localStorage.getItem("USER_AUTH")}`,
+    //   },
+    //   body: JSON.stringify({ Id: bookId }),
+    // });
+    console.log("delete");
   });
 
   return bookWrapper;
