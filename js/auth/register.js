@@ -107,19 +107,12 @@ registerBtn.addEventListener("click", (event) => {
       },
       body: JSON.stringify({
         FirstName: modal.inputFirstName.value,
-        1: modal.inputFirstName.value,
-        FirstName: modal.inputLastName.value,
-        2: modal.inputLastName.value,
+        LastName: modal.inputLastName.value,
         Username: modal.inputUsername.value,
-        3: modal.inputUsername.value,
         Email: modal.inputEmail.value,
-        4: modal.inputEmail.value,
         PasswordHash: modal.inputPassword.value,
-        5: modal.inputPassword.value,
         CreatedAt: datetime,
-        6: datetime,
-        Role: 9,
-        7: 9,
+        Role: 2,
       }),
     });
 

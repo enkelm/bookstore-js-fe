@@ -1,12 +1,18 @@
 // const BASE_URL = "http://localhost/bookstore-php-api/index.php/";
 
 const closeModal = (backdrop, modal) => {
-  document.body.removeChild(backdrop);
-  document.body.removeChild(modal);
+  const animationTime = 300;
+  backdrop.style.animation = `fadeout ${animationTime}ms`;
+  modal.style.animation = `moveout ${animationTime}ms`;
+  setTimeout(() => {
+    document.body.removeChild(backdrop);
+    document.body.removeChild(modal);
+  }, animationTime / 2);
 };
 
 const closeOnBackdropClick = (backdrop, modal) => {
   backdrop.addEventListener("click", () => {
+    console.log(modal.classList);
     closeModal(backdrop, modal);
   });
 };
@@ -69,9 +75,7 @@ loginBtn.addEventListener("click", (event) => {
       },
       body: JSON.stringify({
         Username: modal.inputEmail.value,
-        0: modal.inputEmail.value,
         PasswordHash: modal.inputPassword.value,
-        1: modal.inputPassword.value,
       }),
     });
 

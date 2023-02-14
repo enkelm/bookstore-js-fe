@@ -1,9 +1,11 @@
 const purchasedItems = document.querySelector(".purchasedItems");
 const totalQuantity = document.getElementById("total-quantity");
 const totalPrice = document.getElementById("total-price");
+const purchaseBtn = document.getElementById("purchaseBtn");
+const purchaseList = []; // stores items to be send over fetch
 
 const CreateShoppingItem = (
-  bookId = generateId,
+  bookId = generateId(),
   title = "",
   author = "",
   price = 0
@@ -70,9 +72,15 @@ const CreateShoppingItem = (
     totalPrice.innerHTML = `${
       parseInt(totalPrice.innerHTML) - removeFromTotal
     }`;
+    deleteItemFromList(bookId);
   });
 
   let prevQuantity = 1;
+
+  purchaseList.push({
+    Product: bookId,
+    Quantity: prevQuantity,
+  });
 
   quantityInput.addEventListener("change", (event) => {
     let totQuantity = parseInt(totalQuantity.innerHTML);
@@ -89,11 +97,31 @@ const CreateShoppingItem = (
     }
     if (currQuantity === 0) {
       purchasedItems.removeChild(item);
+      deleteItemFromList(bookId);
     }
     totalQuantity.innerHTML = `${totQuantity}`;
     totalPrice.innerHTML = `${newTotalPrice}`;
     prevQuantity = currQuantity;
-  });
 
-  return item;
+    purchaseList.forEach((purchasedItem) => {
+      if (purchasedItem.Product === bookId) {
+        purchasedItem.Quantity = prevQuantity;
+      }
+    });
+  });
+};
+
+purchaseBtn.addEventListener("click", async () => {
+  const result = await fetch(BASE_URL + "purchase/add", {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("USER_AUTH")}`,
+    },
+    body: JSON.stringify(purchaseList),
+  });
+});
+
+const deleteItemFromList = (bookId) => {
+  let itemToDelete = purchaseList.find((item) => item.Product === bookId);
+  itemToDelete && purchaseList.splice(purchaseList.indexOf(itemToDelete), 1);
 };

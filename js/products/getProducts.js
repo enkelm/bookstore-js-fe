@@ -32,6 +32,8 @@ const Book = (
   const purchaseId = generateId();
   const deleteBookId = generateId();
 
+  bookWrapper.style.animation = `fadein 0.5s`;
+
   bookWrapper.innerHTML = `
     <div class="card h-100" style="width: 18rem;">
         <img src="${imgUrl}" class="card-img-top" alt="${title} cover image" />

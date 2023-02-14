@@ -97,7 +97,7 @@ createBookBtn.addEventListener("click", (event) => {
     const result = await fetch(BASE_URL + "products/add", {
       method: "POST",
       headers: {
-        Authorization: "Bearer" + " " + localStorage.getItem("USER_AUTH"),
+        Authorization: `Bearer ${localStorage.getItem("USER_AUTH")}`,
       },
       body: formData,
     });
