@@ -1,33 +1,12 @@
-// const BASE_URL = "http://localhost/bookstore-php-api/index.php/";
-
-// const closeModal = (backdrop, modal) => {
-//   document.body.removeChild(backdrop);
-//   document.body.removeChild(modal);
-// };
-
-// const closeOnBackdropClick = (backdrop, modal) => {
-//   backdrop.addEventListener("click", () => {
-//     closeModal(backdrop, modal);
-//   });
-// };
-
-// const Backdrop = (modal) => {
-//   const backdrop = document.createElement("div");
-//   backdrop.id = "backdrop";
-//   backdrop.classList = "backdrop";
-//   document.body.appendChild(backdrop);
-//   closeOnBackdropClick(backdrop, modal);
-//   return backdrop;
-// };
-
-const RegisterForm = () => {
+const RegisterForm = (admin = null, userData = {}) => {
+  const { FirstName, LastName, Username, Email, Role } = userData;
   const form = document.createElement("form");
   form.method = "post";
   form.classList = "flex flex-col flex-center gap-3 card popup";
   form.id = "registerForm";
 
   form.innerHTML = `
-  <h1>Sign Up</h1>
+  <h1>${admin ? `Edit User` : `Sign Up`}</h1>
 
       <div class="grid grid-col-2 gap-2">
         <label for="inputFirstName">First Name</label>
@@ -36,6 +15,7 @@ const RegisterForm = () => {
           id="inputFirstName"
           class="form-control"
           placeholder="First Name"
+          ${FirstName && `value="${FirstName}"`}
           required
           autofocus=""
         />
@@ -45,6 +25,7 @@ const RegisterForm = () => {
           id="inputLastName"
           class="form-control"
           placeholder="Last Name"
+          ${LastName && `value="${LastName}"`}
           required
         />
         <label for="inputUsername">Username</label>
@@ -53,6 +34,7 @@ const RegisterForm = () => {
           id="inputUsername"
           class="form-control"
           placeholder="Username"
+          ${Username && `value="${Username}"`}
           required
         />
         <label for="inputEmail">Email address</label>
@@ -61,6 +43,7 @@ const RegisterForm = () => {
           id="inputEmail"
           class="form-control"
           placeholder="example@email.com"
+          ${Email && `value="${Email}"`}
           required
         />
         <label for="inputPassword">Password</label>
@@ -69,11 +52,28 @@ const RegisterForm = () => {
           id="inputPassword"
           class="form-control"
           placeholder="Password"
-          required
+          ${!admin && `required`}
         />
+        
+        ${
+          admin
+            ? ` <label for="cars">Choose Role:</label>
+            <select name="role" id="inputRole">
+              <option value="1" ${
+                Role === 1 && `selected="selected"`
+              }>Admin</option>
+              <option value="2" ${
+                Role === 2 && `selected="selected"`
+              }>Client</option>
+            </select>
+          `
+            : `<div></div>`
+        }
       </div>
 
-      <button type="submit" class="btn btn-primary">Sign in</button>
+      <button type="submit" class="btn btn-primary">${
+        admin ? `Save Changes` : `Sign in`
+      }</button>
   `;
 
   document.body.appendChild(form);

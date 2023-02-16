@@ -218,13 +218,13 @@ const Book = (
   });
 
   deleteBookBtn.addEventListener("click", async () => {
-    // const result = await fetch(BASE_URL + "products/delete", {
-    //   method: POST,
-    //   headers: {
-    //     Authorization: `Bearer ${localStorage.getItem("USER_AUTH")}`,
-    //   },
-    //   body: JSON.stringify({ Id: bookId }),
-    // });
+    const result = await fetch(BASE_URL + "products/delete", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("USER_AUTH")}`,
+      },
+      body: JSON.stringify({ Id: bookId }),
+    });
     console.log("delete");
   });
 

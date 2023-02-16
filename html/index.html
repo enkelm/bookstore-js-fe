@@ -42,7 +42,13 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
+              <a
+                class="nav-link active"
+                aria-current="page"
+                href="#"
+                id="homeBtn"
+                >Home</a
+              >
             </li>
 
             <li id="shopping-cart" class="nav-item" style="display: none">
@@ -84,25 +90,32 @@
                 </li>
               </ul>
             </li>
-            <!-- <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                  aria-expanded="false">
-                  Admin Panel
+            <li
+              id="admin-panel"
+              class="nav-item dropdown"
+              style="display: none"
+            >
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Admin Panel
               </a>
               <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Users</a></li>
+                <li>
+                  <a class="dropdown-item" href="#" id="usersPanel">Users</a>
+                </li>
 
-                  <li>
-                      <a class="dropdown-item" href="#">Product</a>
-                  </li>
-                  <li>
-                      <hr class="dropdown-divider">
-                  </li>
-                  <li>
-                      <a class="dropdown-item" href="#">Purchases</a>
-                  </li>
+                <li>
+                  <a class="dropdown-item" href="#" id="purchasesPanel"
+                    >Purchases</a
+                  >
+                </li>
               </ul>
-          </li> -->
+            </li>
           </ul>
           <button
             id="logout"
@@ -219,168 +232,19 @@
     </div>
   </body>
 
-
-   <!-- <div id="tableUsers">
-            <div class="table-responsive">
-                <table class="table table-hover caption-top" style="width: 95%">
-                    <caption>List of users<button type="button" class="btn btn-outline-secondary" style="float: right;"><i class="bi bi-plus-lg"></i></button></caption>
-                    <thead>
-                        <tr>
-                            <th scope="col">Id</th>
-                            <th scope="col">First name</th>
-                            <th scope="col">Last name</th>
-                            <th scope="col">Username </th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Role</th>
-                            <th scope="col">Created at</th>
-                            <th scope="col">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody class="table-group-divider">
-                        <tr>
-                            <th scope="row"></th>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>
-                                <div class="d-grid gap-2 d-md-block">
-                                    <button type="button" class="btn btn-outline-danger"><i
-                                            class="bi bi-trash"></i></button>
-                                    <button type="button" class="btn btn-outline-primary"><i
-                                            class="bi bi-pencil-square"></i></i></button>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div> -->
-
-        <!-- <div id="tableProducts">
-            <div class="table-responsive">
-                <table class="table table-hover caption-top" style="width: 95%">
-                    <caption>List of products<button type="button" class="btn btn-outline-secondary" style="float: right;"><i class="bi bi-plus-lg"></i></button></caption>
-                    <thead>
-                        <tr>
-                            <th scope="col">Id</th>
-                            <th scope="col">Title</th>
-                            <th scope="col">Author</th>
-                            <th scope="col">Description</th>
-                            <th scope="col">Price</th>
-                            <th scope="col">Bulk Price</th>
-                            <th scope="col">Bulk Condition</th>
-                            <th scope="col">Cover Image</th>
-                            <th scope="col">Created at</th>
-                            <th scope="col">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody class="table-group-divider">
-                        <tr>
-                            <th scope="row"></th>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>
-                                <div class="d-grid gap-2 d-md-block">
-                                    <button type="button" class="btn btn-outline-danger"><i
-                                            class="bi bi-trash"></i></button>
-                                    <button type="button" class="btn btn-outline-primary"><i
-                                            class="bi bi-pencil-square"></i></i></button>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div> -->
-
-        <!-- <div id="tablePurchases">
-            <div class="table-responsive">
-                <table class="table table-hover caption-top" style="width: 95%">
-                    <caption>List of purchases</caption>
-                    <thead>
-                        <tr>
-                            <th scope="col">Id</th>
-                            <th scope="col">First name</th>
-                            <th scope="col">Last name</th>
-                            <th scope="col">Username </th>
-                            <th scope="col">Total Price</th>
-                            <th scope="col">Created at</th>
-                            <th scope="col">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody class="table-group-divider">
-                        <tr>
-                            <th scope="row"></th>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>
-                                <div class="d-grid gap-2 d-md-block">
-                                    <button type="button" class="btn btn-outline-danger"><i
-                                            class="bi bi-trash"></i></button>
-                                    <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal"
-                                        data-bs-target="#tableItems"><i class="bi bi-folder-symlink-fill"></i></button>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div> -->
-        <div class="modal fade" id="tableItems" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-        aria-labelledby="tableItems" aria-hidden="true">>
-        <div class="modal-dialog modal-xl">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <div class="table-responsive">
-                        <table class="table table-hover caption-top">
-                            <caption>List of purchased items </caption>
-                            <thead>
-                                <tr>
-                                    <th scope="col">Id</th>
-                                    <th scope="col">Title</th>
-                                    <th scope="col">Author</th>
-                                    <th scope="col">Price</th>
-                                    <th scope="col">Quantity</th>
-                                </tr>
-                            </thead>
-                            <tbody class="table-group-divider">
-                                <tr>
-                                    <th scope="row"></th>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" data-bs-dismiss="modal">Back to
-                        purchases</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
   <script src="../js/products/getProducts.js"></script>
   <script src="../js/auth/menageAuthState.js"></script>
+
   <script src="../js/auth/login.js"></script>
   <script src="../js/auth/register.js"></script>
+
   <script src="../js/shopping/shopping.js"></script>
   <script src="../js/products/createProducts.js"></script>
+
+  <script src="../js/admin/adminPanels.js"></script>
+  <script src="../js/admin/purchasesPanel.js"></script>
+  <script src="../js/admin/usersPanel.js"></script>
+
   <script
     src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
     integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"

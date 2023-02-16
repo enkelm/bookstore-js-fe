@@ -2,6 +2,7 @@ const loginBtn = document.getElementById("login");
 const registerBtn = document.getElementById("signup");
 const logoutBtn = document.getElementById("logout");
 const shoppingCartBtn = document.getElementById("shopping-cart");
+const adminPanelBtn = document.getElementById("admin-panel");
 const booksMenagement = document.getElementById("books-menagement");
 
 const checkAuth = () => {
@@ -13,6 +14,7 @@ const checkAuth = () => {
   if (token) {
     if (role === "ADMIN") {
       booksMenagement.style = "display: inherit";
+      adminPanelBtn.style = "display: inherit;";
       noDisplayAdmin.forEach((btn) => {
         btn.classList.remove("no-display-admin");
       });

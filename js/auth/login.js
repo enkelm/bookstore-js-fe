@@ -12,7 +12,6 @@ const closeModal = (backdrop, modal) => {
 
 const closeOnBackdropClick = (backdrop, modal) => {
   backdrop.addEventListener("click", () => {
-    console.log(modal.classList);
     closeModal(backdrop, modal);
   });
 };

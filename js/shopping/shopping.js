@@ -112,13 +112,23 @@ const CreateShoppingItem = (
 };
 
 purchaseBtn.addEventListener("click", async () => {
-  const result = await fetch(BASE_URL + "purchase/add", {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${localStorage.getItem("USER_AUTH")}`,
-    },
-    body: JSON.stringify(purchaseList),
-  });
+  if (purchaseList !== 0) {
+    const result = await fetch(BASE_URL + "purchase/add", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("USER_AUTH")}`,
+      },
+      body: JSON.stringify(purchaseList),
+    });
+
+    if (result.status >= 200 && result.status <= 299) {
+      const data = await result.text();
+      console.log(data);
+      location.reload();
+    } else {
+      console.log(result.status, result.statusText);
+    }
+  }
 });
 
 const deleteItemFromList = (bookId) => {
